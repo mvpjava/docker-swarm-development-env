@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  mongo:
+    image: mongo:xenial
+    deploy:
+      replicas: 1
+    secrets:
+      - mongo_root_password
+    networks:
+      - mongodb_network
+    configs:
+      - source: mongo_config
+        target: /docker-entrypoint-initdb.d/mongo_config.sh
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: /run/secrets/mongo_root_password
+      MONGO_INITDB_DATABASE: demo
+
+
+secrets:
+  mongo_root_password:
+    external: true
+
+configs:
+  mongo_config:
+    external: true
+
+networks:
+  mongodb_network:
+
