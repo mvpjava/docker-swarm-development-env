@@ -1,6 +1,21 @@
 version: '3.7'
 
 services:
+  mongo-express:
+    image: mongo-express
+    deploy:
+      replicas: 1
+    secrets:
+      - mongo_root_password
+    ports:
+      - 8081:8081
+    networks:
+      - mongodb_network
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: /run/secrets/mongo_root_password
+      ME_CONFIG_MONGODB_SERVER: mongo
+
   mongo:
     image: mongo:xenial
     deploy:
@@ -17,7 +32,23 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: /run/secrets/mongo_root_password
       MONGO_INITDB_DATABASE: demo
 
-
+  javaApp:
+    image: openjdk:14
+    deploy:
+      replicas: 1
+    secrets:
+      - mongo_root_password
+    networks:
+      - mongodb_network
+    volumes:
+      - $PWD/eclipse-workspace:/tmp/
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: /run/secrets/mongo_root_password
+      MONGO_INITDB_DATABASE: demo
+    command:
+      java -jar /tmp/demo-jar-with-dependencies.jar
+      
 secrets:
   mongo_root_password:
     external: true
