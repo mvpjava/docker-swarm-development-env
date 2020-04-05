@@ -41,7 +41,7 @@ services:
     networks:
       - mongodb_network
     volumes:
-      - ${PWD}/:/tmp/
+      - $PWD/:/tmp/
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: /run/secrets/mongo_root_password
