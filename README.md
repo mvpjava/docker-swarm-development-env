@@ -2,7 +2,7 @@
 Advantages of Using Docker Swarm in a Develpoment Environment
 ==============================================================
 
-1) Start the Java Developer environment by running the command ...
+1) Start the Java Developer environment and simulate a regular build by running the command ...
 
 $ ./run_sts4_ide.sh
 
