@@ -2,13 +2,8 @@
 Advantages of Using Docker Swarm in a Develpoment Environment
 ==============================================================
 
-The stack deployed via command "docker stack deploy -c stack.yml myStack" supports
-a Java developer workflow where the Java developer is working and compiling their code
-in an IDE. You can get access to the Java project code here ...
-"git clone https://github.com/mvpjava/java-driver-api-mongo4.git"
-
-You can start a Java Developer environment (with Eclipse/Spring Tool SuiteIDE, git, maven, Docker CLI)
-Just run the command ...
+Start the Java Developer environment (with Eclipse/Spring Tool SuiteIDE, git, maven, Docker CLI)
+by running the command (might have to 'chmod 755' the file) ...
 
 $ ./run_sts4_ide.sh
 
@@ -17,11 +12,11 @@ $ ./run_sts4_ide.sh
 - Save in directory $DOCKER_ECLIPSE_WORKSPACE_DIR"
 - When project is created then run a maven "clean package" build to get uber jar created in $ECLIPSE_WORKSPACE_DIR
 
+Once the fat/uber jar is created with all its dependancies , we can fire up the entire docker swarm stack with
+a single command ...
 
-Once the jar is created with all its dependancies (fat/uber jar), it is then
-placed in a directory volume bind mounts by Docker into the JDK container.
-The jar is then executed (will connect to mongo and periodically add documents in an endless loop)
-Make sure to git clone of this repo in the same directory in which you ran the STS Docker container
+$ ./run_stack.sh
+
 
 The Docker swarm stack will reference Docker objects like overlay networks, secrets and configs
 available only in Docker swarm. This will allow us to better reproduce non-developer environments and also improve the
