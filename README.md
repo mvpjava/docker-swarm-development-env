@@ -6,15 +6,13 @@ Advantages of Using Docker Swarm in a Develpoment Environment
 
 $ ./run_sts4_ide.sh
 
-- When IDE open, import git project via File->Import->Git->Projects from Git (with smart import)
-- Select Clone URI -->: https://github.com/mvpjava/java-driver-api-mongo4.git
-- Save in directory $HOME/Documents/workspace-spring-tool-suite-4-4.6.0.RELEASE
+- When IDE open, import project via File->Open Projects from File System"
+- Choose project ~/Documents/workspace-spring-tool-suite-4-4.6.0.RELEASE/java-driver-api-mongo4 
 - When project is created then run a maven "clean package" build to get uber jar created
 
-2) What is different about this containerized developer environment is that the docker CLI is installed 
-(like docker in docker) therefore you can deploy the docker swarm stack from the terminal window directly from with the IDE (Window->Show View->Terminal
+2) Execute the following shell command to deploy (mongo, mongo express and the java application)
+which will make use of the docker secrets, configs and network created by the script
 
-$ cd ~/Documents/workspace-spring-tool-suite-4-4.6.0.RELEASE
 $ sudo ./run_stack.sh
 
 3) Open up a Browser and goto "localhost:8081" to acess mongodb express GUI console.
