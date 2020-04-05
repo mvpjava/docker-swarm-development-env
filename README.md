@@ -10,11 +10,9 @@ in an IDE. You can get access to the Java project code here ...
 I have a Spring Tool Suite (STS) IDE enviroment which you can use to import the git Java project
 and then run a maven clean package build to get the jar file generated in the development environment.
 This STS IDE is run in a Docker container.
-You can run  ....
-git clone https://github.com/mvpjava/docker-spring-sts4-ide.git
-and then execute the shell script to launch the IDE
+You can run the following shell launch the IDE
 
-$ run.sh
+$ run_sts-ide.sh
 
 Once the jar is created with all its dependancies (fat/uber jar), it is then
 placed in a directory volume bind mounts by Docker into the JDK container.
