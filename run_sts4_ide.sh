@@ -29,6 +29,6 @@ mvpjava/spring-sts4-ide:jdk14
 
 # When IDE open, import git project ...
 echo "When IDE open, import project via File->Import Projects from file systems"
-echo "Choose project $ECLIPSE_WORKSPACE_DIR/java-driver-api-mongo4 "
+echo "Choose project $DOCKER_ECLIPSE_WORKSPACE_DIR/java-driver-api-mongo4 "
 
 git clone  https://github.com/mvpjava/java-driver-api-mongo4.git java-driver-api-mongo4
