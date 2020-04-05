@@ -26,7 +26,9 @@ You can stop and remove the stack via command ...
 $ sudo docker stack rm mystack
 
 
-===========================
+-------
+NOT NEEDED FOR DEMO - extra files
+
 
 If your interested in getting into the mongo container manually via
 the 'docker container exec -it $container-id bash' command then you can start mongo client and 
@@ -43,4 +45,11 @@ $ mongo  -u root -p /run/secrets/mongo_root_password
 > db.metrics.count()   #show number of rows/documents in table/collection
 
 > db.metrics.find()   #list all rows/documents in table/collection
-~                              
+
+===============================
+
+setup_docker_objects.sh  - creates the docker secret, configs, netwoek needed for demo
+
+init-mongo.sh   - mongo initialization script with test data read at startup. This is conveted into a docker config object
+
+mongo_run.sh  - not needed but can use to run a single mongo db as a docker service
