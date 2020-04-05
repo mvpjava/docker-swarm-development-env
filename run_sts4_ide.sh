@@ -26,3 +26,11 @@ docker container run -d --rm \
 -h sts4 \
 --name spring-sts4-ide \
 mvpjava/spring-sts4-ide:jdk14
+
+# When IDE open, import git project ...
+echo "When IDE open, import git project via File->Import->Git->Projects from Git (with smart import)"
+echo "Select Clone URI --> Use the following URI: https://github.com/mvpjava/java-driver-api-mongo4.git"
+echo "Save in directory $DOCKER_ECLIPSE_WORKSPACE_DIR"
+echo "When project is created then run a maven clean package build to get uber jar created in $ECLIPSE_WORKSPACE_DIR "
+
+
