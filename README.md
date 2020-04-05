@@ -11,7 +11,8 @@ $ ./run_sts4_ide.sh
 - Save in directory $HOME/Documents/workspace-spring-tool-suite-4-4.6.0.RELEASE
 - When project is created then run a maven "clean package" build to get uber jar created
 
-2) Once the uber jar is created, deploy the docker swarm stack with script ...
+2) What is different about this containerized developer environment is that the docker CLI is installed 
+(like docker in docker) therefore you can deploy the docker swarm stack from the terminal window directly from with the IDE (Window->Show View->Terminal
 
 $ ./run_stack.sh
 
@@ -31,10 +32,10 @@ $ docker stack rm mystack
 ===========================
 
 If your interested in getting into the mongo container manually via
-the 'docker container exec -it <container-id> bash' command then you can start mongo client and 
+the 'docker container exec -it $container-id bash' command then you can start mongo client and 
 execute the following commands in order to interact with newly creared database.
 
-$ mongo  -u root -p /run/secrets/mongo_root_password    #Start mongo client
+$ mongo  -u root -p /run/secrets/mongo_root_password 
 
 > use demo              #switch to using demo database
 
