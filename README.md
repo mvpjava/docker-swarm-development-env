@@ -2,24 +2,21 @@
 Advantages of Using Docker Swarm in a Develpoment Environment
 ==============================================================
 
-The stack deployed via command "docker stack deploy -c stack.yml myStack" supports
-a Java developer workflow where the Java developer is working and compiling their code
-in an IDE. You can get access to the Java project code here ...
-"git clone https://github.com/mvpjava/java-driver-api-mongo4.git"
+Start the Java Developer environment (with Eclipse/Spring Tool SuiteIDE, git, maven, Docker CLI)
+by running the command (might have to 'chmod 755' the file) ...
 
-I have a Spring Tool Suite (STS) IDE enviroment which you can use to import the git Java project
-and then run a maven clean package build to get the jar file generated in the development environment.
-This STS IDE is run in a Docker container.
-You can run  ....
-git clone https://github.com/mvpjava/docker-spring-sts4-ide.git
-and then execute the shell script to launch the IDE
+$ ./run_sts4_ide.sh
 
-$ run.sh
+- When IDE open, import git project via File->Import->Git->Projects from Git (with smart import)
+- Select Clone URI --> Use the following URI: https://github.com/mvpjava/java-driver-api-mongo4.git
+- Save in directory $DOCKER_ECLIPSE_WORKSPACE_DIR"
+- When project is created then run a maven "clean package" build to get uber jar created in $ECLIPSE_WORKSPACE_DIR
 
-Once the jar is created with all its dependancies (fat/uber jar), it is then
-placed in a directory volume bind mounts by Docker into the JDK container.
-The jar is then executed (will connect to mongo and periodically add documents in an endless loop)
-Make sure to git clone of this repo in the same directory in which you ran the STS Docker container
+Once the fat/uber jar is created with all its dependancies , we can fire up the entire docker swarm stack with
+a single command ...
+
+$ ./run_stack.sh
+
 
 The Docker swarm stack will reference Docker objects like overlay networks, secrets and configs
 available only in Docker swarm. This will allow us to better reproduce non-developer environments and also improve the
@@ -28,9 +25,17 @@ scripts in order to create all those Docker objects first ...
 
 $ setup_docker_objects.sh
 
-You can then spawn all the Docker swarm services via the shell command ..
+You can then startthe Docker stack via shell command ..
 
 $ docker stack deploy -c stack.yml mystack
+
+Open up a Browser and goto localhost:8081 to acess mongodb express GUI console
+you can select the "demo" database and see the Documents getting updated at about 
+every 5 seconds (just refresh browser)
+
+You can stop and remove the stack via command ...
+
+$ docker stack rm mystack
 
 Once your in the mongo container you can start mongo client and 
 execute the following commands in order to interact with newly 
