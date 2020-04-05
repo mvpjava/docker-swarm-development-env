@@ -14,6 +14,7 @@ $ ./run_sts4_ide.sh
 2) What is different about this containerized developer environment is that the docker CLI is installed 
 (like docker in docker) therefore you can deploy the docker swarm stack from the terminal window directly from with the IDE (Window->Show View->Terminal
 
+$ cd ~/Documents/workspace-spring-tool-suite-4-4.6.0.RELEASE
 $ sudo ./run_stack.sh
 
 3) Open up a Browser and goto "localhost:8081" to acess mongodb express GUI console.
