@@ -14,10 +14,7 @@ $ ./run_sts4_ide.sh
 2) What is different about this containerized developer environment is that the docker CLI is installed 
 (like docker in docker) therefore you can deploy the docker swarm stack from the terminal window directly from with the IDE (Window->Show View->Terminal
 
-$ ./run_stack.sh
-
-This script will create the docker objects like the overlay network, secrets and configs
-needed for the demo. It's a wrapper script to automate the docker commands.
+$ sudo ./run_stack.sh
 
 3) Open up a Browser and goto "localhost:8081" to acess mongodb express GUI console.
 Select the "demo" database and view the Document count incrementing by refreshing the browser
@@ -26,7 +23,7 @@ Select the "demo" database and view the Document count incrementing by refreshin
 
 You can stop and remove the stack via command ...
 
-$ docker stack rm mystack
+$ sudo docker stack rm mystack
 
 
 ===========================
