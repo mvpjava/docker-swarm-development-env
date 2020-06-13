@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   mongo-express:
@@ -36,6 +36,8 @@ services:
     image: openjdk:14
     deploy:
       replicas: 1
+    depends_on:
+      - mongo
     secrets:
       - mongo_root_password
     networks:
