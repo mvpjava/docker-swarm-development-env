@@ -4,14 +4,16 @@ Advantages of Using Docker Swarm in a Develpoment Environment
 
 1) Start the Java Developer environment and simulate a regular build by running the command ...
 
-$ ./run_sts4_ide.sh
+$ ./run_sts4_ide.sh - IF you want to modify code in IDE and re-package but I have already tagged the jar as 
+a Docker image in my DockerHub mvpjava repository as mvpjava/java-driver-api-mongo4:$TAG
 
 - When IDE open, import project via File->Open Projects from File System"
 - Choose project ~/Documents/workspace-spring-tool-suite-4-4.6.0.RELEASE/java-driver-api-mongo4 
 - When project is created then run a maven "clean package" build to get uber jar created
 
 2) Execute the following shell command to deploy (mongo, mongo express and the java application)
-which will make use of the docker secrets, configs and network created by the script
+which will make use of the docker secrets, configs and network created by the script.
+This will get the latest java app Docker image from DockerHub - mvpjava/java-driver-api-mongo4:$TAG
 
 $ sudo ./run_stack.sh
 
