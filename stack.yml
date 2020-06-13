@@ -33,7 +33,7 @@ services:
       MONGO_INITDB_DATABASE: demo
 
   javaApp:
-    image: openjdk:14
+    image: mvpjava/java-driver-api-mongo4:v1
     deploy:
       replicas: 1
     depends_on:
@@ -42,8 +42,6 @@ services:
       - mongo_root_password
     networks:
       - mongodb_network
-    volumes:
-      - ${PWD}:/tmp/
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: /run/secrets/mongo_root_password
